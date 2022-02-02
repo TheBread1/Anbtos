@@ -15,8 +15,10 @@ local w, h
 
 local screen = component.list('screen')()
 for address in component.list('screen') do
+    computer.beep(300)
     if #component.invoke(address, 'getKeyboards') > 0 then
-        screen = address
+      computer.beep(400)  
+      screen = address
     end
 end
 
@@ -28,6 +30,7 @@ if gpu and screen then
     component.invoke(gpu, "setBackground", 0x31bd69)
     component.invoke(gpu, "setForeground", 0xc3c3c3)
     component.invoke(gpu, "fill", 1, 1, w, h, " ")
+    computer.beep(500)
     cls = function()component.invoke(gpu,"fill", 1, 1, w, h, " ")end
 end
 local y = 1
@@ -76,14 +79,19 @@ local function dofile(fs, file)
 end
 
 local function boot(kernel)
-    status("BOOTING")
     _G.computer.getBootAddress = function()return kernel.address end
     cls()
+    status("STARTING")
+    computer.beep(1150)
+    computer.beep(1250)
+    computer.beep(1350)
     dofile(kernel.address, kernel.fpx .. kernel.file)
 end
 
 status("Memory in total:")
 status(tostring(computer.totalMemory()))
+status("Power stats:")
+status(tostring((computer.energy/computer.maxEnergy)*100))
 status("Select what to boot:")
 
 local osList = {}
