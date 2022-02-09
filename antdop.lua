@@ -90,8 +90,6 @@ end
 
 status("Memory in total:")
 status(tostring(computer.totalMemory()))
-status("Power stats:")
-status(tostring((computer.energy/computer.maxEnergy)*100))
 status("Select what to boot:")
 
 local osList = {}
