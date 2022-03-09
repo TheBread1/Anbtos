@@ -1,6 +1,7 @@
 local component = component or require('component')
-local computer = computer or require('computer')
 local unicode = unicode or require('unicode')
+computer = computer or require('computer')
+
 
 local eeprom = component.list("eeprom")()
 computer.getBootAddress = function()
@@ -90,6 +91,8 @@ end
 
 status("Memory in total:")
 status(tostring(computer.totalMemory()))
+status("Power stored %")
+status(tostring(computer.energy()/computer.maxEnergy())*100))
 status("Select what to boot:")
 
 local osList = {}
