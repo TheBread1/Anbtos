@@ -91,7 +91,6 @@ end
 
 status("Memory in total:"..computer.totalMemory())
 status("Power stored %"..status(tostring(computer.energy()/computer.maxEnergy())*100)))
-status("Select what to boot:")
 
 local osList = {}
 
@@ -114,7 +113,7 @@ for fs in component.list("filesystem") do
         status(tostring(#osList).."."..osName.." from "..(fs:sub(1,3)))
     end
 end
-status("Select os: ")
+status("Select what to boot: ")
 if #osList == 1 then
     boot(osList[1])
 end
