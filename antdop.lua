@@ -89,10 +89,8 @@ local function boot(kernel)
     dofile(kernel.address, kernel.fpx .. kernel.file)
 end
 
-status("Memory in total:")
-status(tostring(computer.totalMemory()))
-status("Power stored %")
-status(tostring(computer.energy()/computer.maxEnergy())*100))
+status("Memory in total:"..computer.totalMemory())
+status("Power stored %"..status(tostring(computer.energy()/computer.maxEnergy())*100)))
 status("Select what to boot:")
 
 local osList = {}
